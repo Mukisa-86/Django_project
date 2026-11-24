@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if food %}Edit{% else %}Add{% endif %} Food</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f3f6f4; margin: 0; color: #24312a; }
+        main { max-width: 650px; margin: 35px auto; padding: 24px; background: white; border-radius: 12px; }
+        label { display: block; margin-top: 16px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 12px; margin-top: 7px; border: 1px solid #ccd5ce; border-radius: 6px; font: inherit; }
+        textarea { min-height: 100px; }
+        button, a { display: inline-block; margin-top: 18px; padding: 11px 15px; border: 0; border-radius: 6px; background: #176b45; color: white; text-decoration: none; cursor: pointer; }
+        a { background: #5b6860; }
+        .message { color: #b42318; margin-top: 12px; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>{% if food %}Edit food item{% else %}Add food item{% endif %}</h1>
+    {% if messages %}
+        {% for message in messages %}<p class="message">{{ message }}</p>{% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Food name</label>
+        <input id="name" name="name" maxlength="100" required value="{{ food.name|default:'' }}">
+
+        <label for="price">Price (UGX)</label>
+        <input id="price" name="price" type="number" min="0" step="1" required value="{{ food.price|default:'0' }}">
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description">{{ food.description|default:'' }}</textarea>
+
+        <button type="submit">Save food</button>
+        <a href="{% url 'food-page' %}">Cancel</a>
+    </form>
+</main>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Food Management System</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: Arial, sans-serif; background: #f3f6f4; color: #24312a; }
+        header { background: #176b45; color: white; padding: 24px 5%; }
+        header h1 { margin: 0 0 6px; }
+        main { max-width: 1100px; margin: 28px auto; padding: 0 16px; }
+        .panel { background: white; padding: 22px; margin-bottom: 20px; border-radius: 12px; box-shadow: 0 2px 8px #0000000d; }
+        .toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+        a.button, button { display: inline-block; border: 0; border-radius: 6px; padding: 10px 14px; background: #176b45; color: white; text-decoration: none; cursor: pointer; font-size: 14px; }
+        .secondary { background: #5b6860 !important; }
+        .danger { background: #b42318 !important; }
+        input { padding: 10px; border: 1px solid #ccd5ce; border-radius: 6px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+        th, td { padding: 12px; border-bottom: 1px solid #e5eae6; text-align: left; vertical-align: top; }
+        th { background: #f7faf8; }
+        .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+        .message { padding: 12px; border-radius: 6px; background: #e7f5eb; margin-bottom: 12px; }
+        .empty { padding: 25px; text-align: center; color: #68756d; }
+        @media (max-width: 650px) { main { margin-top: 16px; } th, td { padding: 8px; } table { font-size: 13px; } }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Food Management System</h1>
+  
+</header>
+<main>
+    <section class="panel">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <div class="toolbar">
+            <div>
+                <h2>Food items</h2>
+                <p>Number of items shown: {{ foods|length }}</p>
+            </div>
+            <a class="button" href="{% url 'food-create' %}">+ Add food</a>
+        </div>
+        <form method="get" action="{% url 'food-page' %}">
+            <input type="search" name="q" placeholder="Search food by name" value="{{ query }}">
+            <button type="submit">Search</button>
+            <a class="button secondary" href="{% url 'food-page' %}">Clear</a>
+        </form>
+        <table>
+            <thead>
+                <tr><th>Name</th><th>Price</th><th>Description</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+            {% for food in foods %}
+                <tr>
+                    <td>{{ food.name }}</td>
+                    <td>UGX {{ food.price }}</td>
+                    <td>{{ food.description|default:"—" }}</td>
+                    <td>
+                        <div class="actions">
+                            <a class="button secondary" href="{% url 'food-update' food.pk %}">Edit</a>
+                            <a class="button danger" href="{% url 'food-delete' food.pk %}">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="4" class="empty">No food items found. Select “Add food” to create the first one.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <p><a href="/food/">View the REST API</a> · <a href="/admin/">Admin panel</a></p>
+</main>
+</body>
+</html>

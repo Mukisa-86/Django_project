@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Delete Food</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f3f6f4; margin: 0; color: #24312a; }
+        main { max-width: 600px; margin: 50px auto; padding: 25px; background: white; border-radius: 12px; }
+        button, a { display: inline-block; padding: 11px 15px; border: 0; border-radius: 6px; color: white; text-decoration: none; cursor: pointer; }
+        button { background: #b42318; } a { background: #5b6860; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Delete food item</h1>
+    <p>Are you sure you want to delete <strong>{{ food.name }}</strong> (UGX {{ food.price }})?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+        <a href="{% url 'food-page' %}">Cancel</a>
+    </form>
+</main>
+</body>
+</html>
