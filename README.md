@@ -2,9 +2,12 @@
 
 A web-based application and RESTful API built with Python, Django, and Django REST Framework for managing food records. Users can view, search, add, update, and delete food items through a clean web interface or interact with the data programmatically via API endpoints.
 
+**Student:** Mukisa Moureen  
+**Reg. No:** 24/446BSE/AP/U  
+
 ---
 
-## 🛠️ Tools & Technologies
+## Tools & Technologies
 
 | Technology | Purpose |
 | :--- | :--- |
@@ -18,7 +21,7 @@ A web-based application and RESTful API built with Python, Django, and Django RE
 
 ---
 
-## ✨ Main System Functions
+## Main System Functions
 
 * **View Foods:** Displays all food records saved in the database.
 * **Search Foods:** Filter and find specific food records by name.
@@ -30,7 +33,7 @@ A web-based application and RESTful API built with Python, Django, and Django RE
 
 ---
 
-## 🗄️ Database Design
+## Database Design
 
 ### `Food` Model (Primary)
 
@@ -47,7 +50,7 @@ A web-based application and RESTful API built with Python, Django, and Django RE
 
 ---
 
-## 📁 Project Folder Structure
+## Project Folder Structure
 
 ```text
 rest/
@@ -71,7 +74,7 @@ rest/
 
 ---
 
-## 🚀 How to Run the System
+## How to Run the System
 
 ### 1. Activate Virtual Environment & Start Server
 Open your terminal in the project root directory, activate your Python virtual environment, navigate into the `rest` directory, and run the development server:
@@ -95,7 +98,7 @@ Once the server is running at `http://127.0.0`, open your browser or API client 
 
 ---
 
-## 🔗 Main Pages & API Routes
+## Main Pages & API Routes
 
 ### Web Interface Routes
 
@@ -117,7 +120,7 @@ Once the server is running at `http://127.0.0`, open your browser or API client 
 
 ---
 
-## 🧪 Testing Checklist
+## Testing Checklist
 
 - [ ] Open `/super/` and verify that existing food records load properly.
 - [ ] Add a new food record and confirm it appears in the list.
@@ -128,7 +131,7 @@ Once the server is running at `http://127.0.0`, open your browser or API client 
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 * Add user registration and login authentication.
 * Implement user roles and access permissions.
