@@ -46,7 +46,7 @@ A web-based application and RESTful API built with Python, Django, and Django RE
 | `created_at` | Timestamp when the record was created |
 | `update_at` | Timestamp when the record was last updated |
 
-*(Note: A secondary `Product` model with `name`, `category`, `price`, and `expiry` fields is also registered in the admin interface.)*
+
 
 ---
 
