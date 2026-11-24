@@ -1,101 +1,138 @@
-**FOOD MANAGEMENT SYSTEM
- TOOLS AND TECHNOLOGIES**
-Technology	-Purpose
-Python	-Main programming language.
-Django	Web framework -for backend logic and page handling.
-HTML	-Creates the web pages.
-SQLite	-Stores application records.
-Django REST Framework	-Provides REST API endpoints.
-Visual Studio Code	-Code editor.
-Web browser	-Used to access the system.
-** MAIN SYSTEM FUNCTIONS**
-View foods: Displays food records saved in the database.
-Search foods: Helps find a food record.
-Add food: Saves a food name, price and description.
-Update food: Changes details of an existing food record.
-Delete food: Removes a record after confirmation.
-API access: Allows food data to be accessed through API endpoints.
-** DATABASE DESIGN**
-The main database model is Food. Its fields are:
-Field	Meaning
-id	-Automatically generated unique record number.
-name	-Name of the food.
-price	-Price of the food.
-description	-Additional details about the food.
-created_at	--Date and time the record was created.
-update_at	--Date and time the record was last updated, according to the model field name.
-A Product model may also be present with name, category, price and expiry fields. The main web pages in this documentation manage Food records.
- 
-** PROJECT FOLDER STRUCTURE**
+# Food Management System
+
+A web-based application and RESTful API built with Python, Django, and Django REST Framework for managing food records. Users can view, search, add, update, and delete food items through a clean web interface or interact with the data programmatically via API endpoints.
+
+---
+
+## 🛠️ Tools & Technologies
+
+| Technology | Purpose |
+| :--- | :--- |
+| **Python** | Main programming language |
+| **Django (v6.0.6)** | Web framework for backend logic and page handling |
+| **Django REST Framework** | Provides REST API endpoints |
+| **SQLite** | Stores application records |
+| **HTML** | Creates the web pages |
+| **Visual Studio Code** | Code editor |
+| **EchoAPI / Postman** | Used for testing REST API endpoints |
+
+---
+
+## ✨ Main System Functions
+
+* **View Foods:** Displays all food records saved in the database.
+* **Search Foods:** Filter and find specific food records by name.
+* **Add Food:** Create and save a new food item with a name, price (UGX), and description.
+* **Update Food:** Edit and save changes to existing food records.
+* **Delete Food:** Safely remove records after user confirmation.
+* **REST API Access:** Perform full CRUD (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`) operations via JSON endpoints.
+* **Admin Panel:** Built-in Django administration dashboard for managing `Food` and `Product` models.
+
+---
+
+## 🗄️ Database Design
+
+### `Food` Model (Primary)
+
+| Field | Type / Meaning |
+| :--- | :--- |
+| `id` | Automatically generated unique record number |
+| `name` | Name of the food item |
+| `price` | Price of the food item (UGX) |
+| `description` | Additional details about the food |
+| `created_at` | Timestamp when the record was created |
+| `update_at` | Timestamp when the record was last updated |
+
+*(Note: A secondary `Product` model with `name`, `category`, `price`, and `expiry` fields is also registered in the admin interface.)*
+
+---
+
+## 📁 Project Folder Structure
+
+```text
 rest/
 ├── manage.py
 ├── rest/
-│├── settings.py
-│└── urls.py
-└──super/
-    ├──models.py
-    ├──views.py
-    ├──serialisers.py
-    ├──urls.py
-    ├──admin.py
-    └──templates/
-        └──foods/
-            ├──food_list.html
-            ├──food_form.html
+│   ├── settings.py
+│   └── urls.py
+└── super/
+    ├── admin.py
+    ├── models.py
+    ├── serialisers.py
+    ├── urls.py
+    ├── views.py
+    └── templates/
+        └── foods/
+            ├── food_list.html
+            ├── food_form.html
             └── food_confirm_delete.html
-  HOW TO RUN THE SYSTEM?
-Step 1: Open the project folder in the terminal and activate your Python virtual environment, Start the local server by running: python manage.py runserver
-
- 
-Step 2 : Open a browser and go to http://127.0.0.1:8000/super  for the web interface, or test http://127.0.0.1:8000/food  in Postman and http://127.0.0.1:8000/admin for the super user.
- 
- 
-	 
- 
-MAIN PAGES AND API ROUTES
-Route	Purpose
-/app/	Food management page.
-/app/add/	Add a food record.
-/app/<id>/edit/	Update a selected record.
-/app/<id>/delete/	Confirm and delete a record.
-/food/	Food API endpoint.
-/food/<id>/	API endpoint for one food record.
-The exact routes depend on the URL patterns in your project. Check super/urls.py if a route is different.
- TESTING
-•	Open the food page and check that records are displayed.
-•	Add a food record and confirm it appears in the list.
-•	Edit a record and confirm the changes are saved.
-•	Delete a test record and confirm it is removed.
-•	Search for a food record.
-•	Open the API endpoint and check that it returns food data.
- FUTURE IMPROVEMENTS
-•	Add user registration and login.
-•	Add user roles and access permissions.
-•	Add stock quantities and low-stock notifications.
-•	Add expiry-date reminders and reports.
-•	Improve the design for mobile phones.
-•	Deploy the application to secure web hosting.
- 
-Figure 1: The Home Dashboard
- 
-Figure 2: Add Food Item Form
- 
-Figure 3:Edit Food Item Form
- 
-Figure 4: Delete Food Item Form
- 
-Figure 5: GET Method in Echo API
- 
-Figure 6: POST Method in Echo API
- 
-Figure 7: PUT Method in Echo API
- 
-Figure 8: PATCH Method in Echo API
- 
-Figure 9: DELETE Method in Echo API
- 
-Figure 10: Error response of Bad Request after the wrong data entry on Price
+```
 
 
-Figure 11: Error response of Not Found
+---
 
+## 🚀 How to Run the System
+
+### 1. Activate Virtual Environment & Start Server
+Open your terminal in the project root directory, activate your Python virtual environment, navigate into the `rest` directory, and run the development server:
+
+```bash
+# Windows PowerShell activation example
+.\venv\Scripts\Activate.ps1
+
+# Navigate to project directory and run server
+cd rest
+python manage.py runserver
+```
+*(Or use `py manage.py runserver` depending on your Python installation.)*
+
+### 2. Access the Application
+Once the server is running at `http://127.0.0`, open your browser or API client to access:
+
+* **Web Dashboard:** `http://127.0.0super/`
+* **REST API Root:** `http://127.0.0food/`
+* **Django Admin Panel:** `http://127.0.0admin/`
+
+---
+
+## 🔗 Main Pages & API Routes
+
+### Web Interface Routes
+
+| Route | Purpose |
+| :--- | :--- |
+| `/super/` | Main food management dashboard (View & Search) |
+| `/super/add/` | Form to add a new food record |
+| `/super/<id>/edit/` | Form to update a selected food record |
+| `/super/<id>/delete/` | Confirmation page to delete a record |
+
+### REST API Endpoints
+
+| Endpoint | Allowed Methods | Purpose |
+| :--- | :--- | :--- |
+| `/food/` | `GET`, `POST`, `OPTIONS` | Retrieve all food records or create a new one |
+| `/food/<id>/` | `GET`, `PUT`, `PATCH`, `DELETE` | Retrieve, update, partially update, or delete a specific record |
+
+*(Note: Check `super/urls.py` if custom route prefixes like `/app/` are configured in your local branch.)*
+
+---
+
+## 🧪 Testing Checklist
+
+- [ ] Open `/super/` and verify that existing food records load properly.
+- [ ] Add a new food record and confirm it appears in the list.
+- [ ] Edit an existing record and verify changes persist.
+- [ ] Delete a test record after confirming on the delete prompt.
+- [ ] Use the search bar to filter food items by name.
+- [ ] Test `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` requests against `/food/` and `/food/<id>/` using EchoAPI or Postman (including `400`/`405` bad request handling and `404` not found responses).
+
+---
+
+## 🔮 Future Improvements
+
+* Add user registration and login authentication.
+* Implement user roles and access permissions.
+* Add stock quantity tracking and low-stock notifications.
+* Add expiry-date reminders and inventory reports.
+* Enhance responsive styling for mobile devices.
+* Deploy the application to a secure production web host.
