@@ -92,9 +92,9 @@ python manage.py runserver
 ### 2. Access the Application
 Once the server is running at `http://127.0.0`, open your browser or API client to access:
 
-* **Web Dashboard:** `http://127.0.0super/`
-* **REST API Root:** `http://127.0.0food/`
-* **Django Admin Panel:** `http://127.0.0admin/`
+* **Web Dashboard:** `http://127.0.0/super/`
+* **REST API Root:** `http://127.0.0/food/`
+* **Django Admin Panel:** `http://127.0.0/admin/`
 
 ---
 
