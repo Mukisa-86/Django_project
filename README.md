@@ -87,7 +87,7 @@ Open your terminal in the project root directory, activate your Python virtual e
 cd rest
 python manage.py runserver
 ```
-*(Or use `py manage.py runserver` depending on your Python installation.)*
+
 
 ### 2. Access the Application
 Once the server is running at `http://127.0.0`, open your browser or API client to access:
@@ -116,7 +116,7 @@ Once the server is running at `http://127.0.0`, open your browser or API client 
 | `/food/` | `GET`, `POST`, `OPTIONS` | Retrieve all food records or create a new one |
 | `/food/<id>/` | `GET`, `PUT`, `PATCH`, `DELETE` | Retrieve, update, partially update, or delete a specific record |
 
-*(Note: Check `super/urls.py` if custom route prefixes like `/app/` are configured in your local branch.)*
+
 
 ---
 
